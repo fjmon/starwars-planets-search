@@ -5,6 +5,7 @@ import reqAPI from '../services/reqAPI';
 
 function MyProvider({ children }) {
   const [planet, setPlanet] = useState([]);
+  const [namePlanet, setNamePlanet] = useState({ filterByName: { name: '' } });
 
   useEffect(() => {
     const planetsAPI = async () => {
@@ -16,6 +17,8 @@ function MyProvider({ children }) {
 
   const contextValue = {
     planet,
+    namePlanet,
+    setNamePlanet,
   };
 
   return (
