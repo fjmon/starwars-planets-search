@@ -1,3 +1,4 @@
+import { number } from 'prop-types';
 import React, { useContext } from 'react';
 import StarWarsContext from '../context/myContext';
 
@@ -7,6 +8,9 @@ function Table() {
     namePlanet,
     setNamePlanet,
   } = useContext(StarWarsContext);
+
+  const cols = ['orbital_period', 'population',
+    'diameter', 'rotation_period', 'surface_water'];
 
   return (
     <div>
@@ -18,6 +22,31 @@ function Table() {
         } }
         value={ namePlanet.filterByName.name }
       />
+      <select
+        data-testid="column-filter"
+      >
+        {cols.map((item) => (
+          <option key={ item }>{item}</option>
+        ))}
+      </select>
+      <select
+        data-testid="comparison-filter"
+      >
+        <option value="maior que">maior que</option>
+        <option value="menor que">menor que</option>
+        <option value="igual a">igual a</option>
+      </select>
+      <input
+        data-testid="value-filter"
+        type="number"
+      />
+      <button
+        data-testid="button-filter"
+        type="button"
+        onClick=
+      >
+        Filtrar
+      </button>
 
       <table>
 

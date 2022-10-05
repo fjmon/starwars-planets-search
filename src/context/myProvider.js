@@ -6,6 +6,11 @@ import reqAPI from '../services/reqAPI';
 function MyProvider({ children }) {
   const [planet, setPlanet] = useState([]);
   const [namePlanet, setNamePlanet] = useState({ filterByName: { name: '' } });
+  const [filterValues, setFilterValues] = useState({
+    column: 'population',
+    comparison: 'maior que',
+    value: '0',
+  });
 
   useEffect(() => {
     const planetsAPI = async () => {
