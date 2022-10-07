@@ -72,11 +72,36 @@ function Table() {
         Filtrar
       </button>
 
-      {/* /* <button>
-      type="button"
-      onClick={ () => {
+      <button
+        type="button"
+        data-testid="button-remove-filters"
+        onClick={ () => setFilterValues([]) }
+      >
+        Limpar Filtros
+      </button>
+      {filterValues.map((elem, index) => (
+        <div
+          key={ elem.comparison }
+          data-testid="filter"
+        >
+          <button
+            type="button"
+            onClick={ () => {
+              const clone = [...filterValues];
+              clone.splice(index, 1);
+              setFilterValues(clone);
+            } }
+          >
+            X
+            <span>
+              { elem.comparison }
+              { elem.value }
+              { elem.column }
 
-      </button> */ }
+            </span>
+          </button>
+        </div>
+      ))}
 
       <table>
 
