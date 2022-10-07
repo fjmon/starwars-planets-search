@@ -11,6 +11,7 @@ function Table() {
     filterValues,
     setFilterValues,
     filtrandoDados,
+    filterColumns,
   } = useContext(StarWarsContext);
 
   const cols = ['orbital_period', 'population',
@@ -32,9 +33,10 @@ function Table() {
         onChange={ (e) => setSelected({ ...selected, column: e.target.value }) }
         data-testid="column-filter"
       >
-        {cols.map((item) => (
-          <option key={ item }>{item}</option>
-        ))}
+        {cols.filter(filterColumns)
+          .map((item) => (
+            <option key={ item }>{item}</option>
+          ))}
       </select>
 
       <select
@@ -70,6 +72,12 @@ function Table() {
         Filtrar
       </button>
 
+      {/* /* <button>
+      type="button"
+      onClick={ () => {
+
+      </button> */ }
+
       <table>
 
         <thead>
@@ -95,6 +103,7 @@ function Table() {
           planet.filter((planeta) => planeta.name.toUpperCase()
             .includes(namePlanet.filterByName.name.toUpperCase()))
             .filter(filtrandoDados)
+            .filter(filterColumns)
             .map((item) => (
               <tbody key={ item.name }>
                 <tr>

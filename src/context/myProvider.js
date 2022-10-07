@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import StarWarsContext from './myContext';
+import React, { useEffect, useState } from 'react';
 import reqAPI from '../services/reqAPI';
+import StarWarsContext from './myContext';
 
 function MyProvider({ children }) {
   const [planet, setPlanet] = useState([]);
@@ -12,6 +12,10 @@ function MyProvider({ children }) {
     value: '0',
   });
   const [filterValues, setFilterValues] = useState([]);
+
+  const filterColumns = (param) => !filterValues
+    .find((item) => param === item.column
+    || param === item.comparison || param === item.value);
 
   // const [data, setData] = useState({}) // onde os dados estão, quem receberá meus dados
   // const [selectedFilters, setSelectedFilters] = useState({}) // est p agrupar filtros
@@ -69,6 +73,7 @@ function MyProvider({ children }) {
     filterValues,
     setFilterValues,
     filtrandoDados,
+    filterColumns,
   };
 
   return (
