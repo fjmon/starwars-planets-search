@@ -52,12 +52,10 @@ function MyProvider({ children }) {
           .column]) < Number(elem.value));
         break;
 
-      case 'igual a':
+      default:
         resultFiltro.push(item[elem
           .column] === elem.value.toUpperCase());
         break;
-      default:
-        return true;
       }
     });
     return resultFiltro
